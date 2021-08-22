@@ -45,6 +45,42 @@ router.post('/',(req,res)=>{
     })
 })
 
+//no.of students who have registered today for theatre society from class science
+router.get('/aggregate',async(req,res)=>{
+StudentModel.aggregate([
+        { "$match": { "class": "science","society": "theatre" } },
+    ],
+    function( err, data ) {
+  
+      if ( err )
+        throw err;
+  
+      //console.log( JSON.stringify( data, undefined, 2 ) );
+      res.json(data);
+  
+    }
+  );
+})
+
+//students above the age 15, who have registered for swimming society in arts and science class
+router.get('/year',async(req,res)=>{
+    StudentModel.aggregate([
+            
+            {  "$match": {  "year" : {$gt: 15} ,  "society":"swimming", "class":"arts and science"  } },
+
+        ],
+        function( err, data ) {
+      
+          if ( err )
+            throw err;
+      
+          //console.log( JSON.stringify( data, undefined, 2 ) );
+          res.json(data);
+      
+        }
+      );
+    })
+
 
 
 module.exports = router;

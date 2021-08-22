@@ -8,6 +8,39 @@ var StudentSchema = new mongoose.Schema({
     },
     subjects:[
         {
+            type: String,
+        }
+    ],
+    class:{
+        type: String,
+    },
+    society:[
+        {
+            type: String,
+        }
+    ],
+    year:{
+        type: Number ,
+    }
+
+});
+mongoose.model("Student",StudentSchema)
+
+
+
+
+
+/*
+
+var StudentSchema = new mongoose.Schema({
+    name:{
+        type: String,
+    },
+    contact:{
+        type: String,
+    },
+    subjects:[
+        {
             name: String,
         }
     ],
@@ -26,4 +59,6 @@ var StudentSchema = new mongoose.Schema({
     }
 
 });
-mongoose.model("Student",StudentSchema)
+
+
+*/
